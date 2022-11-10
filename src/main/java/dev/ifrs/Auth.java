@@ -24,7 +24,8 @@ public class Auth {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
     public String getJWT(@FormParam("name") String name, @FormParam("email") String email){
-        
+        System.out.println("get JWT methodo");
+
         return Jwt.issuer("http://localhost:8084")
             .upn(email)
             .groups(new HashSet<>(Arrays.asList("User")))
@@ -40,7 +41,8 @@ public class Auth {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
     public String getADMIN(@FormParam("name") String name, @FormParam("email") String email){
-        
+        System.out.println("get JWT with ADMIN methodo");
+
         return Jwt.issuer("http://localhost:8084")
             .upn(email)
             .groups(new HashSet<>(Arrays.asList("Admin")))
