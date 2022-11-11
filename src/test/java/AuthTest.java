@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
@@ -11,6 +12,7 @@ import javax.ws.rs.FormParam;
 public class AuthTest {
 
     @Test
+    @DisplayName("First Test")
     public void test(){
 
         given().formParam("name", "Alexandre")
@@ -18,7 +20,5 @@ public class AuthTest {
             .when().post("/auth/getjwt")
             .then()
                 .statusCode(200);
-        
     }
-    
 }
