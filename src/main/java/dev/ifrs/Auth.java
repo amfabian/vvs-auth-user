@@ -36,7 +36,7 @@ public class Auth {
             .claim(Claims.email, email)
             .sign();
     }
-
+    // post para token com grupo admin
     @Path("/getadmin")
     @POST
     @PermitAll
