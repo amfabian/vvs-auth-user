@@ -34,7 +34,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=amfabian_vvs-auth-user
-      - name: Package and Deploy
+      - name: Package
+        run: ./mvnw clean package
+      - name: Docker
+        run: docker images
+      - name: Deploy
         run: |
           echo "${{ secrets.DOCKERHUB_PS }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-          ./mvnw clean package -Dquarkus.container-image.push=true -Dquarkus.jib.base-registry-username=${{ secrets.DOCKERHUB_USERNAME }} -Dquarkus.jib.base-registry-password=${{ secrets.DOCKERHUB_PS }}
+          ./mvnw clean package 
