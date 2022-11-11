@@ -18,6 +18,8 @@ import io.smallrye.jwt.build.Jwt;
 @Path("/auth")
 public class Auth {
     
+    private String teste;
+
     @Path("/getjwt")
     @POST
     @PermitAll
