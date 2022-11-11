@@ -48,8 +48,12 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-jib</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jacoco</artifactId>
-       <scope>test</scope>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -119,6 +123,22 @@
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.19.0</version>
+        <configuration>
+          <rulesets>
+            <ruleset>/category/java/bestpractices.xml</ruleset>
+            <ruleset>/category/java/codestyle.xml</ruleset>
+            <ruleset>/category/java/design.xml</ruleset>
+            <ruleset>pmd.xml</ruleset>
+          </rulesets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
   <profiles>
     <profile>
       <id>native</id>
@@ -133,21 +153,4 @@
       </properties>
     </profile>
   </profiles>
-    <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.19.0</version>
-        <configuration>
-            <rulesets>
-                <ruleset>/category/java/bestpractices.xml</ruleset>
-                <ruleset>/category/java/codestyle.xml</ruleset>
-                <ruleset>/category/java/design.xml</ruleset>
-                <ruleset>pmd.xml</ruleset>
-            </rulesets>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
 </project>
