@@ -22,21 +22,23 @@ public class AuthResourceTest {
 
         
 
-        given()                
+        given() 
+            .formParam("name", "")
+            .formParam("email", "")               
             .when().post("/auth/getjwt")
             .then()
-                .statusCode(500);
+                .statusCode(200);
     }
 
 
    
     @Test
-    @DisplayName("First Test")
+    @DisplayName("terceiro Test para ")
     public void testSecurityJWT(){
 
         given().formParam("name", "Alexandre")
                 .formParam("email", "alex@mail.com")
-            .when().post("/auth/getjwt")
+            .when().post("/auth/getadmin")
             .then()
                 .statusCode(200);
         
