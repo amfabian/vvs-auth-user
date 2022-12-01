@@ -15,8 +15,6 @@ public class GenerateTokenTest {
         GenerateToken gen = new GenerateToken();
         
         assertNotEquals("null", gen.getToken("alex", "email"));
-        //gen.getToken("alex", "email");
-
     }
 
     @Test
@@ -25,8 +23,12 @@ public class GenerateTokenTest {
         GenerateToken gen = new GenerateToken();
         
         assertNotEquals("null", gen.getTokenAdmin("alex", "email"));
-        //gen.getToken("alex", "email");
-
     }
     
+    @Test
+    @DisplayName("Teste GenerateToken")
+    public void testGetTokenNull(){
+        GenerateToken gen = new GenerateToken();
+        assertNotEquals("null", gen.getToken("alex", "email"));
+    }
 }

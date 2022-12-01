@@ -22,11 +22,10 @@ public class AuthResourceTest {
 
         
 
-        given().formParam("name", "Alexandre")
-                .formParam("email", "alex@mail.com")
+        given()                
             .when().post("/auth/getjwt")
             .then()
-                .statusCode(200);
+                .statusCode(500);
     }
 
 
