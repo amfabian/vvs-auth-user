@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import javax.annotation.security.PermitAll;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -19,7 +20,14 @@ import io.smallrye.jwt.build.Jwt;
 
 @Path("/auth")
 public class AuthResource {
-    GenerateToken generate = new GenerateToken();
+    
+    GenerateToken generate;
+
+    @Inject
+    public AuthResource(GenerateToken generate){
+        this.generate = generate;
+    }
+
     private String teste;
 
     @Path("/getjwt")
