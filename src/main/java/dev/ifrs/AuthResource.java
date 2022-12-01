@@ -6,8 +6,10 @@ import java.util.HashSet;
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -16,8 +18,8 @@ import org.eclipse.microprofile.jwt.Claims;
 import io.smallrye.jwt.build.Jwt;
 
 @Path("/auth")
-public class Auth {
-    
+public class AuthResource {
+    GenerateToken generate = new GenerateToken();
     private String teste;
 
     @Path("/getjwt")
@@ -27,14 +29,7 @@ public class Auth {
     @Produces(MediaType.TEXT_PLAIN)
     public String getJWT(@FormParam("name") String name, @FormParam("email") String email){
         System.out.println("get JWT methodo");
-
-        return Jwt.issuer("http://localhost:8084")
-            .upn(email)
-            .groups(new HashSet<>(Arrays.asList("User")))
-            .expiresAt(System.currentTimeMillis() + 360000)
-            .claim(Claims.full_name, name)
-            .claim(Claims.email, email)
-            .sign();
+        return generate.getToken("ale", "ale@mail.com");
     }
     // post para token com grupo admin
     @Path("/getadmin")
@@ -45,12 +40,8 @@ public class Auth {
     public String getADMIN(@FormParam("name") String name, @FormParam("email") String email){
         System.out.println("get JWT with ADMIN methodo");
 
-        return Jwt.issuer("http://localhost:8084")
-            .upn(email)
-            .groups(new HashSet<>(Arrays.asList("Admin")))
-            .expiresAt(System.currentTimeMillis() + 360000)
-            .claim(Claims.full_name, name)
-            .claim(Claims.email, email)
-            .sign();
+        return generate.getTokenAdmin("ale", "ale@mail.com");
     }
+
+
 }
