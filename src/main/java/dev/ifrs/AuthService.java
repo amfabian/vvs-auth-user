@@ -10,7 +10,7 @@ import org.eclipse.microprofile.jwt.Claims;
 import io.smallrye.jwt.build.Jwt;
 
 @RequestScoped
-public class GenerateToken {
+public class AuthService {
 
     public String getToken(String name, String email){
 

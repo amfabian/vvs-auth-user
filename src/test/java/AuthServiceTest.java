@@ -1,34 +1,38 @@
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import javax.inject.Inject;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import dev.ifrs.GenerateToken;
+import dev.ifrs.AuthService;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class GenerateTokenTest {
+public class AuthServiceTest {
+
+    AuthService service;
+
+    @Inject
+    public AuthServiceTest(AuthService service){
+        this.service = service;
+    }
 
     @Test
     @DisplayName("Teste GenerateToken")
     public void testGetToken(){
-        GenerateToken gen = new GenerateToken();
-        
-        assertNotEquals("null", gen.getToken("alex", "email"));
+        assertNotEquals("null", service.getToken("alex", "email"));
     }
 
     @Test
     @DisplayName("Teste GenerateToken")
     public void testGetAdmin(){
-        GenerateToken gen = new GenerateToken();
-        
-        assertNotEquals("null", gen.getTokenAdmin("alex", "email"));
+        assertNotEquals("null", service.getTokenAdmin("alex", "email"));
     }
     
     @Test
     @DisplayName("Teste GenerateToken")
     public void testGetTokenNull(){
-        GenerateToken gen = new GenerateToken();
-        assertNotEquals("null", gen.getToken("alex", "email"));
+        assertNotEquals("null", service.getToken("alex", "email"));
     }
 }

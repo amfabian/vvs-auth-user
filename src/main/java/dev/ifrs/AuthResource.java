@@ -15,11 +15,11 @@ import javax.ws.rs.core.MediaType;
 @Path("/auth")
 public class AuthResource {
     
-    GenerateToken generate;
+    AuthService service;
 
     @Inject
-    public AuthResource(GenerateToken generate){
-        this.generate = generate;
+    public AuthResource(AuthService service){
+        this.service = service;
     }
 
 
@@ -30,7 +30,7 @@ public class AuthResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getJWT(@FormParam("name") String name, @FormParam("email") String email){
         System.out.println("get JWT methodo");
-        return generate.getToken(name, email);
+        return service.getToken(name, email);
     }
     // post para token com grupo admin
     @Path("/getadmin")
@@ -41,7 +41,7 @@ public class AuthResource {
     public String getADMIN(@FormParam("name") String name, @FormParam("email") String email){
         System.out.println("get JWT with ADMIN methodo");
 
-        return generate.getTokenAdmin(name, email);
+        return service.getTokenAdmin(name, email);
     }
 
 
