@@ -3,11 +3,12 @@ import org.junit.jupiter.api.Test;
 import io.quarkus.test.junit.QuarkusTest;
 import static io.restassured.RestAssured.given;
 @QuarkusTest
-public class AuthResourceTest {
+class AuthResourceTest {
 
+    
     @Test
     @DisplayName("Primeiro Teste post getjwt")
-    public void test(){
+    void test(){
 
         given().formParam("name", "Alexandre")
                 .formParam("email", "alex@mail.com")
@@ -18,7 +19,7 @@ public class AuthResourceTest {
 
     @Test
     @DisplayName("Segundo Teste post getjwt")
-    public void testwithClaims(){
+    void testwithClaims(){
 
         
 
@@ -34,7 +35,7 @@ public class AuthResourceTest {
    
     @Test
     @DisplayName("terceiro Test para ")
-    public void testSecurityJWT(){
+    void testSecurityJWT(){
 
         given().formParam("name", "Alexandre")
                 .formParam("email", "alex@mail.com")

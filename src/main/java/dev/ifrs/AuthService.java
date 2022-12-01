@@ -2,6 +2,7 @@ package dev.ifrs;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 
@@ -11,6 +12,8 @@ import io.smallrye.jwt.build.Jwt;
 
 @RequestScoped
 public class AuthService {
+    private static final Logger LOGGER = Logger.getLogger(AuthService.class.getName()); 
+
 
     public String getToken(String name, String email){
 
@@ -22,8 +25,7 @@ public class AuthService {
                     .claim(Claims.full_name, name)
                     .claim(Claims.email, email)
                     .sign();
-            System.out.println("getToken Class");
-            System.out.println(token);
+                    LOGGER.info("getToken metodo");
 
         return token;
     }
@@ -38,8 +40,7 @@ public class AuthService {
                     .claim(Claims.full_name, name)
                     .claim(Claims.email, email)
                     .sign();
-            System.out.println("getToken Class");
-            System.out.println(token);
+                    LOGGER.info("getTokenAdmin metodo");
 
         return token;
     }

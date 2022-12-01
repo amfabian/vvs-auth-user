@@ -9,30 +9,30 @@ import dev.ifrs.AuthService;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class AuthServiceTest {
+class AuthServiceTest {
 
     AuthService service;
 
     @Inject
-    public AuthServiceTest(AuthService service){
+    AuthServiceTest(AuthService service){
         this.service = service;
     }
 
     @Test
     @DisplayName("Teste GenerateToken")
-    public void testGetToken(){
+    void testGetToken(){
         assertNotEquals("null", service.getToken("alex", "email"));
     }
 
     @Test
     @DisplayName("Teste GenerateToken")
-    public void testGetAdmin(){
+    void testGetAdmin(){
         assertNotEquals("null", service.getTokenAdmin("alex", "email"));
     }
     
     @Test
     @DisplayName("Teste GenerateToken")
-    public void testGetTokenNull(){
+    void testGetTokenNull(){
         assertNotEquals("null", service.getToken("alex", "email"));
     }
 }
