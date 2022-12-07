@@ -8,7 +8,7 @@ class AuthResourceTest {
     
     @Test
     @DisplayName("Primeiro Teste post getjwt")
-    void test(){
+    void testGetJWT(){
 
         given().formParam("name", "Alexandre")
                 .formParam("email", "alex@mail.com")
@@ -32,7 +32,7 @@ class AuthResourceTest {
    
     @Test
     @DisplayName("terceiro Test para ")
-    void testSecurityJWT(){
+    void testGetJWTAdmin(){
 
         given().formParam("name", "Alexandre")
                 .formParam("email", "alex@mail.com")

@@ -29,7 +29,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.net.MalformedURLException;
 import java.net.URL;
-public class DatatestTest {
+public class SistemaTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
