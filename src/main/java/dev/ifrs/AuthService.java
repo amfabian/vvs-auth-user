@@ -21,11 +21,12 @@ public class AuthService {
         token = Jwt.issuer("https://quarkus.io/")
                     .upn(email)
                     .groups(new HashSet<>(Arrays.asList("User")))
-                    .expiresAt(System.currentTimeMillis() + 360000)
+                    .expiresAt(System.currentTimeMillis() + 36)
                     .claim(Claims.full_name, name)
                     .claim(Claims.email, email)
                     .sign();
                     LOGGER.info("getToken metodo");
+
 
         return token;
     }
@@ -36,7 +37,7 @@ public class AuthService {
         token = Jwt.issuer("https://quarkus.io/")
                     .upn(email)
                     .groups(new HashSet<>(Arrays.asList("Admin")))
-                    .expiresAt(System.currentTimeMillis() + 360000)
+                    .expiresAt(System.currentTimeMillis() + 36)
                     .claim(Claims.full_name, name)
                     .claim(Claims.email, email)
                     .sign();

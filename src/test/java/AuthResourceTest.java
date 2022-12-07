@@ -20,9 +20,6 @@ class AuthResourceTest {
     @Test
     @DisplayName("Segundo Teste post getjwt")
     void testwithClaims(){
-
-        
-
         given() 
             .formParam("name", "")
             .formParam("email", "")               

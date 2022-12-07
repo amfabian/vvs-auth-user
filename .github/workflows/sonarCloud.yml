@@ -30,6 +30,15 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
+      - name:  Install Google Chrome # Using shell script to install Google Chrome
+        run: |
+        chmod +x ./InstallChrome.sh
+        ./InstallChrome.sh 
+
+      - name: Run Container
+        run: docker run --name auth --rm -p 8082:8082 -d amfabian/vvs-auth-api
+          
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}  # Needed to get PR information, if any

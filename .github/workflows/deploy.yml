@@ -17,6 +17,14 @@ jobs:
     
     - name: Pre Package
       run: chmod +x mvnw
+
+    - name:  Install Google Chrome # Using shell script to install Google Chrome
+      run: |
+        chmod +x ./InstallChrome.sh
+        ./InstallChrome.sh 
+
+    - name: Run Container
+      run: docker run --name auth --rm -p 8082:8082 -d amfabian/vvs-auth-api
       
     - name: Package
       run: |
@@ -24,7 +32,5 @@ jobs:
         echo "${{ secrets.DOCKERHUB_PS }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
         ./mvnw clean package -Dquarkus.container-image.push=true -Dquarkus.jib.base-registry-password=${{ secrets.DOCKERHUB_PS }}
     
-    - name: Docker list all images 
-      run: docker images
-
+  
 
