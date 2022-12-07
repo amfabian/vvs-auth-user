@@ -24,7 +24,7 @@ jobs:
         ./InstallChrome.sh 
 
     - name: Run Container
-      run: docker run --name auth --rm -p 8082:8082 -d amfabian/vvs-auth-api
+      run: docker run --name auth --rm -p 8082:8082 -d amfabian/vvs-auth-user
       
     - name: Package
       run: |
