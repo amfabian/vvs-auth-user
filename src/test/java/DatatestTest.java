@@ -55,22 +55,22 @@ public class DatatestTest {
     driver.quit();
   }
   
-  // @Test
-  // public void home() {
-  //   driver.get("http://0.0.0.0:8082/");
-  //   driver.manage().window().setSize(new Dimension(1920, 1016));
-  //   driver.findElement(By.cssSelector("h1")).click();
-  //   driver.findElement(By.cssSelector("h1")).click();
-  //   {
-  //     WebElement element = driver.findElement(By.cssSelector("h1"));
-  //     Actions builder = new Actions(driver);
-  //     builder.doubleClick(element).perform();
-  //   }
-  //   {
-  //     List<WebElement> elements = driver.findElements(By.cssSelector("h1"));
-  //     assertTrue(elements.get(0).getText().contains("Quarkus"));
-  //   }
-  // }
+  @Test
+  public void home() {
+    driver.get("http://0.0.0.0:8082/");
+    driver.manage().window().setSize(new Dimension(1920, 1016));
+    driver.findElement(By.cssSelector("h1")).click();
+    driver.findElement(By.cssSelector("h1")).click();
+    {
+      WebElement element = driver.findElement(By.cssSelector("h1"));
+      Actions builder = new Actions(driver);
+      builder.doubleClick(element).perform();
+    }
+    {
+      List<WebElement> elements = driver.findElements(By.cssSelector("h1"));
+      assertTrue(elements.get(0).getText().contains("Quarkus"));
+    }
+  }
 
   @Test
   public void userLogin(){
